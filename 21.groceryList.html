@@ -1,0 +1,198 @@
+<!doctype html>
+<script>
+var myArray = {
+  'toBuy': ["Bananas", "Apples", "Kale"],
+  'bought': []
+};
+
+function drawBuy(){
+  var toBuy = "";
+  for (i = 0; i < myArray['toBuy'].length; i++){
+      toBuy += "<div class='listItem'>" + myArray['toBuy'][i] + "<div id='delete' onclick='removeBuy(" + i + ")'>✖︎</div><div id='check' onclick='markBought(" + i + ")'>✔︎</div></div>";
+  }
+  document.getElementById('list').innerHTML = toBuy;
+  document.getElementById('task').value = "";
+  document.getElementById('task').focus();
+  // console.log(i);
+}
+
+
+function drawBought(){
+  var bought = "";
+  for (j = 0; j < myArray['bought'].length; j++){
+      bought += "<div class='boughtItem'>" + myArray['bought'][j] + "<div id='delete' onclick='removeBought(" + j + ")'>✖︎</div><div id='undo' onclick='undoBought(" + j + ")'>undo</div></div>";
+  }
+  document.getElementById('bought').innerHTML = bought;
+}
+
+
+function markBought(el){
+  var x = myArray['toBuy'].splice([el], 1);
+  myArray['bought'].push(x);
+  drawBuy();
+  drawBought();
+}
+
+
+function undoBought(el){
+  var x = myArray['bought'].splice([el], 1);
+  myArray['toBuy'].push(x);
+  drawBuy();
+  drawBought();
+}
+
+
+function pushArray() {
+  var task = document.getElementById('task').value;
+  if (task == "" || task == " "){
+    return;
+  }
+  else {
+    myArray['toBuy'].push(task);
+  }
+  drawBuy();
+  drawBought();
+}
+
+
+function removeBuy(el){
+  // console.log(myArray[el]);
+  myArray['toBuy'].splice([el], 1);
+  drawBuy();
+  drawBought();
+}
+
+
+function removeBought(el){
+  // console.log(myArray['bought'][el]);
+  myArray['bought'].splice([el], 1);
+  drawBuy();
+  drawBought();
+}
+
+
+</script>
+
+<body onload="drawBuy()">
+<h1>Grocery List</h1>
+<div id="wrapper">
+<input id="task" type="text" placeholder="New Item...">
+<button id="submit" type="submit" onclick="pushArray()">Add Item</button>
+<div id="list"></div>
+<div id="bought"></div>
+</div>
+</body>
+
+<style>
+
+body{
+  font-family: sans-serif;
+}
+
+#task{
+  font-size: 20px;
+}
+
+#submit{
+  width: 165px;
+  height: 25px;
+  display: inline-block;
+  border-style: none;
+  font-size: 18px;
+  color: white;
+  background-color: #0066ff;
+  cursor: pointer;
+}
+
+#submit:hover{
+  background-color: #0052cc;
+}
+
+#wrapper{
+  width: 400px;
+  border: 1px solid #666;
+  height: 300px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.listItem{
+  width: 100%;
+  background-color: #F5F5F5;
+  font-size: 20px;
+  font-family: sans-serif;
+  padding: 2%;
+}
+
+.listItem:hover{
+  background-color: lightgray;
+}
+
+.boughtItem{
+  width: 100%;
+  background-color: #d2ff4d;
+  font-size: 20px;
+  font-family: sans-serif;
+  text-decoration: line-through;
+  /*font-style: italic;*/
+  color: gray;
+  padding: 2%;
+  cursor: pointer;
+}
+
+.boughtItem:hover{
+  background-color: #ace600;
+}
+
+#bought{
+  border-top: 1px solid black;
+  align-self: baseline;
+}
+
+#delete{
+  color: gray;
+  float: right;
+  padding-right: 20px;
+  padding-left: 10px;
+  cursor: pointer;
+  height: 100%;
+}
+
+#delete:hover{
+  color: red;
+}
+
+#check{
+  color: gray;
+  float: right;
+  padding-right: 20px;
+  padding-left: 10px;
+  cursor: pointer;
+  height: 100%;
+  transition: .05s ease-in-out;
+}
+
+#check:hover{
+  color: green;
+  font-size: 24px;
+}
+
+#undo {
+  color: gray;
+  float: right;
+  padding-right: 14px;
+  padding-left: 10px;
+  cursor: pointer;
+  height: 100%;
+  transition: .05s ease-in-out;
+  text-decoration: none;
+}
+
+#undo:hover{
+  color: #1a001a;
+  bottom: 10px;
+  font-style: italic;
+}
+</style>
+
+</html>

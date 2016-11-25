@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+<script>
+function play(){
+  var audio = document.getElementById("audio");
+  audio.volume = 0.7;
+  audio.play();
+}
+ </script>
+
+
+<body>
+  <div id="wrapper">
+  <h1>My Computer: So, Khari, how do you feel about coding?</h2>
+  <h1>Me:<button onclick="play()">Play 🔉</button></h1>
+  <audio id="audio" src="http://www.wavsource.com/snds_2016-11-20_5768273412148964/people/politics/baker_arduous.wav"></audio>
+</div>
+</body>
+
+ <style>
+
+body{
+   font-size: 20px;
+   font-family: sans-serif;
+ }
+
+ #wrapper{
+   min-width: 50%;
+ }
+
+button{
+  border-style: none;
+  background-color: #4169E1;
+  font-size: 40px;
+  cursor: pointer;
+  margin-left: 2%;
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 1%;
+  color: white;
+  transition: .5s ease;
+}
+button:hover{
+  background-color: #0000CD;
+  color: white;
+}
+ </style>
+
+</html>

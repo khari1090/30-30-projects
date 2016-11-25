@@ -1,0 +1,62 @@
+<!doctype html>
+
+<script>
+
+function clip1(){
+  var audio = document.getElementById('audio');
+
+//   audio.currentTime = document.getElementById('start1').value;
+//   audio.addEventListener("timeupdate", function(){
+//     if(audio.currentTime >= document.getElementById('end1').value) {
+//         audio.stop();
+//         audio.currentTime = 0;
+//     }
+// });
+  speed();
+  audio.play();
+}
+
+function speed(){
+  var audio = document.getElementById('audio');
+  audio.defaultPlaybackRate = document.getElementById('speed').value;
+  audio.load();
+}
+
+</script>
+
+<body>
+  <div id="wrapper">
+
+  <audio id="audio" controls>
+    <source src="https://www.dropbox.com/s/989k7aesf54hz2m/iGotWhatYouNeed.mp3?raw=1" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio><br>
+
+  <!-- <input id="start1" placeholder="start" value=".3"><input id="end1" placeholder="end" value=".4"><br> -->
+  <br>Playback Speed (enter a value between 0 and 3 - decimals are ok):<br><br>
+  <input id="speed" placeholder="speed" value="1">
+  <button id="clip1" onclick="clip1();">Playback</button>
+
+</div>
+</body>
+
+<style>
+
+body{
+  font-family: sans-serif;
+}
+
+#wrapper{
+  width: 300px;
+  background-color: #ccc;
+  padding: 1%;
+  border-radius: 5px;
+}
+
+input{
+  width: 50px;
+}
+
+</style>
+
+</html>

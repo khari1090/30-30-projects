@@ -1,0 +1,122 @@
+<!doctype html>
+
+<script>
+
+  function charCount(){
+    var chars = [];
+    var txt = document.getElementById('txt').value;
+    var split = txt.split('');
+
+    for (i = 0; i < split.length; i++){
+      chars.push(split[i]);
+      if (split[i] == " " || split[i] == "." || split[i] == "!"){
+        chars.splice(split[i], 1);
+      }
+    }
+    document.getElementById('chars').innerHTML = chars.length;
+    vowelCount();
+    wordCount();
+  }
+
+
+  function vowelCount(){
+    var chars = [];
+    var txt = document.getElementById('txt').value;
+    var split = txt.split('');
+
+    for (i = 0; i < split.length; i++){
+      if (split[i] == "a" || split[i] == "e" || split[i] == "i" || split[i] == "o" || split[i] == "u"){
+        chars.push(split[i]);
+      }
+    }
+    document.getElementById('vowels').innerHTML = chars.length;
+    return chars.length;
+  }
+
+  function wordCount(txt){
+    var count = 0;
+    var txt = document.getElementById('txt').value;
+
+    for (i = 0; i < txt.length; i++){
+      if (txt.charAt(i) == " "){
+        count ++;
+      }
+    }
+
+    if (txt.length == 0){
+      document.getElementById('words').innerHTML = 0;
+    }
+    else{
+    document.getElementById('words').innerHTML = (count + 1);
+  }
+  }
+
+
+</script>
+
+<body onload="charCount()">
+  <div id="wrapper">
+    <textarea id="txt" rows="8" style="width: 400px">This black cat likes milk.</textarea><br>
+    <button id='submit' onclick="charCount()">Analyze Text</button>
+    <table>
+  <tr>
+    <th>Parameter</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>Word Count</td>
+    <td id="words"></td>
+  </tr>
+  <tr>
+    <td>Character Count</td>
+    <td id="chars"></td>
+  </tr>
+  <tr>
+    <td>Vowel Count</td>
+    <td id="vowels"></td>
+  </tr>
+</table>
+  </div>
+</body>
+
+<style>
+
+textarea{
+  font-size: 18px;
+}
+
+#submit{
+  width: 400px;
+  font-size: 22px;
+  padding: 12px;
+  background: tomato;
+  color: white;
+  border-style: none;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#submit:hover{
+  background: red;
+}
+
+table {
+    font-family: sans-serif;
+    border-collapse: collapse;
+    width: 400px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+
+<script>
+  var myList = [];
+
+  window.onload = function loadPrevious(){
+    var stored = JSON.parse(localStorage["myList"]);
+
+    document.getElementById('list').innerHTML = stored;
+  }
+
+  function addToList(){
+    
+    myList.push(document.getElementById('newItem').value);
+    document.getElementById('list').innerHTML = myList + " ";
+    document.getElementById('newItem').value = " ";
+
+    localStorage['myList'] = JSON.stringify(myList);
+  }
+
+  function resetList(){
+    document.getElementById('list').innerHTML = " ";
+    localStorage.clear();
+  }
+
+</script>
+
+<body>
+This is a list that takes advantage of the dom. Refresh the page and your list will remain. To clear list, press 'Reset'
+<br><br>
+<input id="newItem" placeholder="Add Something...">
+<button id="add" onclick="addToList()">Add</button>
+<button id="reset" onclick="resetList()" class="resetButton">Reset</button><br><br>
+
+<div id="list"></div>
+</body>
+
+
+<style>
+
+body{
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+input{
+  font-size: 20px;
+}
+
+#list{
+  height: 300px;
+  width: 300px;
+  border: 1px solid black;
+  font-size: 30px;
+  font-family: sans-serif;
+}
+
+button{
+  border-style: none;
+  color: white;
+  padding: 10px;
+  border: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+button:hover{
+  opacity: .8;
+}
+
+#reset{
+  background-color: tomato;
+}
+
+#add{
+  background-color: darkblue;
+}
+
+</style>
+
+</html>

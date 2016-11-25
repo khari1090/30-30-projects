@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+  <script>
+
+  function percent(){
+    var bar = document.getElementById('bar');
+    var val = document.getElementById('value').value;
+    var percent = document.getElementById('bar-percent');
+
+    bar.style.width = val + "%";
+    percent.innerHTML = val + "%";
+}
+
+  </script>
+</head>
+
+<body>
+  <div id="wrapper">
+
+    <div id="bg">
+      <div id="bar">
+        <div id="bar-percent"></div>
+      </div>
+    </div>
+
+    <div id="percent">
+    <div>0%</div>
+    <div>100%</div>
+  </div>
+  </div>
+  
+    <br><br>
+    Enter a value between 0 and 100:
+    <input id="value" type="number" value="submit"><br><br>
+    <button id="submit" onClick="percent();">Submit</button>
+    <button id="reset" onClick="history.go(0)" class="resetButton">Reset</button>
+
+</body>
+
+<style>
+
+  body{
+    font-family: sans-serif;
+    font-size: 18px;
+  }
+
+  #value{
+    font-size: 18px;
+  }
+
+  #submit{
+    font-size: 18px;
+    background-color: #0fb8ad;
+    color: white;
+    border-style: none;
+    border-radius: 3px;
+    padding: 1%;
+  }
+
+  #reset{
+    font-size: 18px;
+    background-color: red;
+    color: white;
+    border-style: none;
+    border-radius: 3px;
+    padding: 1%;
+  }
+
+  #wrapper{
+    background-color: #F5F5F5;
+    padding: 5%;
+  }
+
+  #bg{
+    width: 100%;
+    height: 30px;
+    border-radius: 50px;
+    background-color: #ddd;
+  }
+
+  #bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 0%;
+    max-width: 100%;
+    height: 30px;
+    border-radius: 50px;
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    -webkit-transition: width 1s ease-in-out;
+  }
+
+  #percent {
+    display:flex;
+    justify-content: space-between;
+    margin-top: 2%;
+  }
+
+</style>
+</html>

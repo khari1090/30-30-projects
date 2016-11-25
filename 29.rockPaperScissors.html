@@ -1,0 +1,169 @@
+<!doctype html>
+<script>
+
+var rock = {what: "rock", image:"http://image.flaticon.com/icons/svg/145/145236.svg"};
+var paper = {what: "paper", image: "http://image.flaticon.com/icons/svg/257/257311.svg"};
+var scissors = {what: "scissors", image: "http://image.flaticon.com/icons/svg/164/164986.svg"};
+
+var choice = [rock, paper, scissors];
+
+var youScore = 1;
+var compScore = 1;
+
+function drawChoices(){
+  var x = "";
+  for (i = 0; i < choice.length; i++){
+    x += "<img class='select' id='" + choice[i] + "' src='" + choice[i].image + "' onclick='yourChoice(" + i + ")'></img>";
+  }
+  document.getElementById('choiceContainer').innerHTML = x;
+}
+
+function yourChoice(el){
+  var a = "";
+  // a += "<img class='choice' src='" + choice[el].image + "'></div>";
+  a += choice[el].image;
+
+  document.getElementById('youChoice').src = a;
+  compChoice();
+}
+
+function compChoice(){
+  var a = ""
+  var num = Math.floor (Math.random() * (3));
+  // a += "<img class='choice' src='" + choice[num].image + "'></div>";
+  a += choice[num].image;
+
+  document.getElementById('compChoice').src = a;
+  // console.log(choice[num].image);
+  checkWinner();
+}
+
+function checkWinner(){
+  var comp = document.getElementById('compChoice').src;
+  var you = document.getElementById('youChoice').src;
+  var message = document.getElementById('message');
+  var scissors = choice[2].image;
+  var rock = choice[0].image;
+  var paper = choice[1].image;
+
+  if (comp == you){
+    message.innerText = "Draw";
+    document.getElementById('you').style.backgroundColor = "#222";
+    document.getElementById('comp').style.backgroundColor = "#333";
+  }
+
+  else if (comp == scissors && you == paper || comp == paper && you == rock || comp == rock && you == scissors){
+    message.innerText = "You Lose";
+    document.getElementById('you').style.backgroundColor = "tomato";
+    document.getElementById('comp').style.backgroundColor = "#333";
+
+    document.getElementById('compScore').innerText = compScore++;
+    console.log(compScore);
+  }
+
+  else {
+    message.innerText = "You win!";
+    document.getElementById('comp').style.backgroundColor = "tomato";
+    document.getElementById('you').style.backgroundColor = "#222";
+
+    document.getElementById('youScore').innerText = youScore++;
+    console.log(youScore);
+  }
+}
+
+</script>
+
+<body onload="drawChoices()">
+  <h1>Computer:</h1>
+<div id="comp"><img id="compChoice" src="http://image.flaticon.com/icons/svg/189/189665.svg"></div>
+<h1>You:</h1>
+<div id="you"><img id="youChoice" src="http://image.flaticon.com/icons/svg/189/189665.svg"></div>
+<div id="choiceContainer"></div>
+<div id="message"></div>
+
+<div id="score">
+  <h2>You:</h2><div id="youScore"></div>
+  <h2>Comp:</h2><div id="compScore"></div>
+</div>
+</body>
+
+<style>
+
+body{
+  font-family: sans-serif;
+}
+
+#comp{
+  background-color: #333;
+  border: 1px solid black;
+  width: 300px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*border-radius: 20px;*/
+}
+
+#you{
+  background-color: #222;
+  border: 1px solid black;
+  width: 300px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*border-radius: 20px;*/
+}
+
+#youChoice, #compChoice{
+  width: 60px;
+  height: 60px;
+  border: none;
+}
+
+#choiceContainer{
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+  height: 100px;
+}
+
+.select{
+  width: 80px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.select:hover{
+  box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.60);
+}
+
+.choice{
+  width: 80px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+#message{
+  border: 1px solid black;
+  height: 40px;
+  width: 300px;
+  font-family: sans-serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#score{
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+  align-items: center;
+  width: 300px;
+  font-size: 30px bold;
+}
+
+</style>
+</html>

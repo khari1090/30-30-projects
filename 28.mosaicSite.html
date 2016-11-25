@@ -1,0 +1,351 @@
+<!doctype html>
+
+<script>
+
+    function ocean(){
+
+      var img1 = document.getElementById('img1');
+      var img2 = document.getElementById('img2');
+      var img3 = document.getElementById('img3');
+      var img4 = document.getElementById('img4');
+      var img5 = document.getElementById('img5');
+      var img6 = document.getElementById('img6');
+      var img7 = document.getElementById('img7');
+      var img8 = document.getElementById('img8');
+
+      var myArray = [img1, img2, img3, img4, img5, img6, img7, img8];
+
+      for (i = 0; i < 1; i++){
+        var i = Math.floor(Math.random() * (8));
+        var x = myArray[i];
+        x.style.background = "url(http://i.giphy.com/12ffdI8DuUi2RO.gif)";
+        x.style.backgroundSize = "450%";
+      }
+    }
+
+</script>
+
+<body onload="ocean()">
+
+  <div id="bodyWrap">
+
+  <div id="header">
+    <h1 id="title">PHARRELL</h1>
+  </div>
+
+  <div id="nav">
+    <ul>
+        <li id="about"><a href="#">about</a></li>
+        <li id="show"><a href="#">show</a></li>
+        <li id="press"><a href="#">press</a></li>
+        <li id="media"><a href="#">media</a></li>
+        <li id="news"><a href="#">News</a></li>
+        <li id="search"><a href="#">Search</a></li>
+    </ul>
+  </div>
+
+  <div class="wrapper">
+
+    <div id="img1">
+      <div id="overlay">
+        <div id="plus">ABOUT</div>
+      </div>
+    </div>
+
+    <div id="img2">
+      <div id="overlay">
+        <div id="plus">SHOW</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wrapper">
+
+    <div id="img3"></div>
+
+    <div id="img4">
+      <div id="overlay">
+        <div id="plus">PRESS</div>
+      </div>
+    </div>
+
+    <div id="img5">
+      <div id="overlay">
+        <div id="plus">MEDIA</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wrapper">
+
+    <div id="img6">
+      <div id="overlay">
+        <div id="plus">NEWS</div>
+      </div>
+    </div>
+
+    <div id="img7"></div>
+
+    <div id="img8">
+    </div>
+
+  </div>
+
+  <div id="footer">
+    <ul>
+        <li id="share"><a href="#">share</a></li>
+        <li id="info"><a href="#">info</a></li>
+        <li id="bio"><a href="#">bio</a></li>
+        <li id="details"><a href="#">details</a></li>
+    </ul>
+  </div>
+  <p style="float: right; color: #566">Copyright 2016</p>
+
+</div>
+
+</body>
+
+<style>
+
+body{
+  width: 80%;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+h1{
+  font-size: 40px;
+  padding-left: 20px;
+}
+
+p{
+  font-size: 11px;
+}
+
+#nav ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+  opacity: 0;
+  animation: slideRight 1.5s;
+  animation-delay: .7s;
+  animation-fill-mode: forwards;
+}
+
+#nav li{
+  /*border: 1px solid black;*/
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#nav li:hover{
+  background-color: #e5ffec;
+  transition: .5s ease;
+}
+
+#nav a{
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+}
+
+#nav a:hover{
+  /*border-bottom: 1px solid;*/
+  color:inherit;
+}
+
+.wrapper{
+  width 80%;
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes appear{
+  0% { opacity: 0}
+  100% { opacity: 1}
+}
+
+@keyframes slideRight{
+  0% { opacity: 0; padding-left: 400px}
+  100% { opacity: 1; padding-left: 0px}
+}
+
+#img1{
+  height: 300px;
+  width: 500px;
+  opacity: 0;
+  cursor: pointer;
+  background: url(http://static.highsnobiety.com/wp-content/uploads/2016/03/02195231/pharrell-g-star-raw-raw-for-the-oceans-sustainable-clothing-collection-00.jpg);
+  background-size: fill;
+  animation: appear 1s;
+  animation-delay: 0.1s;
+  animation-fill-mode: forwards;
+}
+
+#img2{
+  height: 300px;
+  width: 800px;
+  opacity: 0;
+  cursor: pointer;
+  background: url(https://s-media-cache-ak0.pinimg.com/564x/bc/85/63/bc8563f8b7b33a478b6c4cd631126a32.jpg);
+  background-size: cover;
+  animation: appear 1s;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+#img3{
+  height: 300px;
+  width: 200px;
+  opacity: 0;
+  background: url(https://s-media-cache-ak0.pinimg.com/564x/7a/52/bc/7a52bc48078596c4db870d9a526d3bf2.jpg);
+  background-size: cover;
+  animation: appear 1s;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+#img4{
+  height: 300px;
+  width: 600px;
+  opacity: 0;
+  cursor: pointer;
+  background: url(http://static.highsnobiety.com/wp-content/uploads/2016/08/31000416/g-star-pharrell-raw-fw16-campaign-01-550x800.jpg);
+  background-size: cover;
+  animation: appear 1s;
+  animation-delay: 0.4s;
+  animation-fill-mode: forwards;
+}
+
+#img5{
+  height: 300px;
+  width: 500px;
+  opacity: 0;
+  cursor: pointer;
+  background: url(http://www.designboom.com/wp-content/uploads/2014/07/pharrell-williams-g-star-ocean-plastic-denim-designboom-03.jpg);
+  background-size: cover;
+  top: -300px;
+  animation: appear 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+#img6{
+  height: 300px;
+  width: 500px;
+  opacity: 0;
+  cursor: pointer;
+  background: url(http://fora.mtv.ca/wp-content/uploads/2013/04/pharrellheader.jpg);
+  background-size: cover;
+  top: -300px;
+  animation: appear 1s;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+}
+
+#img7{
+  height: 300px;
+  width: 500px;
+  opacity: 0;
+  background: url(https://s-media-cache-ak0.pinimg.com/564x/1a/ab/c6/1aabc66f0f37d4460b8f1cbae03f0ecc.jpg);
+  background-size: cover;
+  top: -300px;
+  animation: appear 1s;
+  animation-delay: 0.24s;
+  animation-fill-mode: forwards;
+}
+
+#img8{
+  height: 300px;
+  width: 400px;
+  opacity: 0;
+  background: url(http://www.rap-up.com/wp-content/uploads/2016/02/pharrell-g-star-2.jpg);
+  background-size: cover;
+  top: -300px;
+  animation: appear 1s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+#img1:hover #overlay{
+  opacity: .8;
+  height: 100%;
+}
+
+#img2:hover #overlay{
+  opacity: .8;
+  height: 100%;
+}
+
+#img4:hover #overlay{
+  opacity: .8;
+  height: 100%;
+}
+
+#img5:hover #overlay{
+  opacity: .8;
+  height: 100%;
+}
+
+#img6:hover #overlay{
+  opacity: .8;
+  height: 100%;
+}
+
+#overlay{
+  background: black;
+  opacity: 0;
+  height: 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  transition: .5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#plus{
+  font-weight: 900;
+  color: white;
+  font-size: 100px;
+}
+
+#footer ul{
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  padding-top: 10px;
+}
+
+#footer li{
+  text-decoration: none;
+  font-size: 12px;
+}
+
+#footer a {
+  text-decoration: none;
+  color: #777;
+  margin-left: 30px;
+  text-transform: uppercase;
+}
+
+#footer a:hover {
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 1px solid #777;
+  transition: .5s ease;
+}
+
+</style>
+
+</html>

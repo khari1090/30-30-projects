@@ -1,0 +1,99 @@
+<!doctype html>
+
+<body>
+
+  <div id="wrapper">
+    <div class="img1">
+      <div id="overlay">
+        <div id="plus">+</div>
+        <p>This is some information about Pharrell. Isn't he swell?</p>
+      </div>
+    </div>
+
+    <div class="img2">
+      <div id="overlay2">
+        <div id="plus">+</div>
+        <p>This is some different imformation about Pharrell. He sure is nice.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<style>
+
+body{
+  font-family: Helvetica;
+}
+
+#wrapper{
+  display: flex;
+}
+
+.img1{
+  height: 400px;
+  width: 290px;
+  cursor: pointer;
+  background: url(https://s-media-cache-ak0.pinimg.com/564x/7a/52/bc/7a52bc48078596c4db870d9a526d3bf2.jpg);
+  background-size: contain;
+  overflow: hidden;
+  margin: 1%;
+}
+
+.img2{
+  height: 400px;
+  width: 290px;
+  cursor: pointer;
+  background: url(https://s-media-cache-ak0.pinimg.com/564x/bc/85/63/bc8563f8b7b33a478b6c4cd631126a32.jpg);
+  background-size: fill;
+  overflow: hidden;
+  margin: 1%;
+}
+
+.img1:hover #overlay{
+  opacity:.8;
+}
+
+.img2:hover #overlay2{
+  opacity: .8;
+  height: 100%;
+}
+
+#overlay{
+  background: black;
+  opacity: 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  transition: .7s ease;
+  padding: 45px 0 66px 0;
+}
+
+#overlay2{
+  background: black;
+  opacity: 0;
+  height: 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  transition: .5s ease;
+  padding: 45px 0 66px 0;
+}
+
+#plus{
+  font-weight: 900;
+  color: white;
+  font-size: 100px;
+}
+
+p {
+  font-size: 20px;
+  color: white;
+  padding: 5%;
+  font-weight: 100;
+}
+
+</style>
+
+</html>

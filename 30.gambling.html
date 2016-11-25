@@ -1,0 +1,219 @@
+<!doctype html>
+
+<script>
+
+var comp = [];
+var you = [];
+var amount = 100;
+
+
+function init(){
+  document.getElementById('amount').innerText = "$" + " " + amount;
+  document.getElementById('you').innerText = 0;
+}
+
+function play(){
+  var num = Math.floor (Math.random() * (4));
+  comp.push(num.toString());
+  document.getElementById('comp').innerText = comp;
+  betRadio();
+  updateAmount();
+  document.getElementById('amount').innerText = "$" + " " + amount;
+  win();
+  reset();
+}
+
+function reset(){
+  comp = [];
+  you = [];
+}
+
+function betRadio() {
+  var radioButtons = document.getElementsByName('candy');
+    for (var i = 0; i < radioButtons.length; i++) {
+      if (radioButtons[i].checked) {
+       document.getElementById('you').innerText = radioButtons[i].value;
+       you.push(radioButtons[i].value);
+     }
+   }
+  }
+
+function betAmount(){
+  var radioButtons = document.getElementsByName('bet');
+    for (var i = 0; i < radioButtons.length; i++) {
+      if (radioButtons[i].checked) {
+      return radioButtons[i].value;
+    }
+   }
+}
+
+function updateAmount(){
+  var add = amount + parseInt(betAmount());
+  var sub = amount - parseInt(betAmount());
+
+  if (comp[0] === you[0]){
+    amount = add;
+    document.getElementById('amount').style.backgroundColor = "lightgreen";
+  }
+  else{
+    amount = sub;
+    document.getElementById('amount').style.backgroundColor = "tomato";
+  }
+  console.log(amount);
+}
+
+function win(){
+  if (amount > 1000){
+    document.getElementById('message').innerText = "You've Won!"
+  }
+  if (amount < 0 && amount > -500){
+    document.getElementById('message').innerText = "You're not doing well...";
+  }
+
+  if (amount < -500){
+    document.getElementById('message').innerText = "You should probably stop playing...";
+  }
+}
+
+</script>
+
+<body onload="init();">
+<div id="comp"></div>
+
+
+<div id="playArea">
+  <div>
+    <label for="candies">Choose One</label><br>
+    <input onchange="betRadio()" type="radio" name="candy" value="0" id="one" checked="checked">0</input><br>
+    <input onchange="betRadio()" type="radio" name="candy" value="1" id="two">1</input><br>
+    <input onchange="betRadio()" type="radio" name="candy" value="2" id="three">2</input><br>
+    <input onchange="betRadio()" type="radio" name="candy" value="3" id="four">3</input><br>
+  </div>
+
+  <div>
+    <label for="bets">Bet Amount:</label><br>
+    <input type="radio" name="bet" value="0" id="none" >Nothing</input><br>
+    <input type="radio" name="bet" value="5" id="two" checked="checked">$5</input><br>
+    <input type="radio" name="bet" value="10" id="three">$10</input><br>
+    <input type="radio" name="bet" value="20" id="four">$20</input><br>
+    <input type="radio" name="bet" value="50" id="four">$50</input><br>
+    <input type="radio" name="bet" value="100" id="four">$100</input><br>
+  </div>
+</div>
+
+<div id="stats">
+You Choose:<div id="you"></div>
+Your Amount:<div id="amount"></div>
+</div>
+
+<button id="bet" onclick="play()">Bet</button>
+<div id="message"></div>
+
+</body>
+
+<style>
+
+body{
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+label{
+  font-weight: bold;
+  font-size: 35px;
+}
+
+#comp{
+  border: 1px solid #1E90FF;
+  height: 100px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  background-color: #1E90FF;
+  color: white;
+}
+
+#playArea{
+  width: 500px;
+  height: 200px;
+  display: flex;
+  border: 1px solid lightgray;
+}
+
+#playArea div{
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+}
+
+#stats{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-top: 1px solid #1E90FF;
+  width: 500px;
+}
+
+#you{
+  height: 50px;
+  width: 50px;
+  border: 4px solid black;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#amount{
+  height: 50px;
+  width: 150px;
+  border: 4px solid black;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bet{
+  width: 500px;
+  font-size: 30px;
+  background-color: DeepSkyBlue;
+  opacity: .8;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px auto;
+  color: white;
+  cursor: pointer;
+  transition: .3s ease;
+  outline: none;
+}
+
+#bet:hover{
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.10);
+  opacity: 1;
+}
+
+#bet:active{
+  background-color: #26C9FF;
+  opacity: 1;
+}
+
+input[radio]:checked ~ .check {
+  border: 5px solid #0DFF92;
+}
+
+input[type=radio]:checked ~ .check::before{
+  background: #0DFF92;
+}
+
+input[type=radio]:checked ~ label{
+  color: #0DFF92;
+}
+
+</style>
+
+</html>

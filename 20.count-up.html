@@ -1,0 +1,33 @@
+<!doctype html>
+<script>
+
+var number;
+
+function startCount(){
+	number = setInterval(count,100);
+}
+
+function count(){
+	var digits = document.getElementById('digits');
+	var currentNumber =	parseFloat(digits.innerHTML);
+	digits.innerHTML = currentNumber+1;
+}
+
+</script>
+<body onload="startCount();">
+<div id="digits">0</div>
+</body>
+
+<style>
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: turquoise;
+  color: white;
+  font-size: 300px;
+  font-family: sans-serif;
+  font-weight: bolder;
+}
+</style>
+</html>

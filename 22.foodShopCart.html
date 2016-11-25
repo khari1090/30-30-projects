@@ -1,0 +1,160 @@
+<!doctype html>
+<script>
+
+var apple = {image: "http://image.flaticon.com/icons/svg/135/135728.svg", price: 5.99, title: "Apple"};
+var orange = {image: "http://image.flaticon.com/icons/svg/135/135620.svg", price: 6.99, title: "Orange"};
+var lettuce = {image: "http://image.flaticon.com/icons/svg/135/135715.svg", price: 18.09, title: "Lettuce"};
+var cheese = {image: "http://image.flaticon.com/icons/svg/135/135652.svg", price: 40.59, title: "Cheese"};
+var blueberry = {image: "http://image.flaticon.com/icons/svg/135/135587.svg", price: 9.29, title: "Blueberies"};
+var meat = {image: "http://image.flaticon.com/icons/svg/135/135628.svg", price: 249.36, title: "Meat"};
+
+var myArray = {
+  'fruits': [apple, orange, lettuce, cheese, blueberry, meat],
+  'cart': []
+};
+
+var total = [];
+
+function drawFruits(){
+  var food = "";
+  var prices = "";
+  var name = "";
+  for (i = 0; i < myArray['fruits'].length; i++){
+      food += "<img class='fruits' onclick='addToCart(" + i + ")' src='" + myArray['fruits'][i].image + "'>";
+      prices += "<div>" + "$" + myArray['fruits'][i].price + "</div>";
+      name += "<div>" + myArray['fruits'][i].title + "</div>";
+  }
+  document.getElementById('nameContainer').innerHTML = name;
+  document.getElementById('fruitContainer').innerHTML = food;
+  document.getElementById('priceContainer').innerHTML = prices;
+
+}
+
+function addToCart(el){
+    var x = myArray['fruits'][el].image;
+    var price = myArray['fruits'][el].price;
+
+    myArray['cart'].push(x);
+    total.push(price);
+    drawCart();
+    document.getElementById('total').innerHTML = "$" + " " + calculateTotal();
+}
+
+function remove(el){
+  // console.log(myArray['bought'][el]);
+  myArray['cart'].splice([el], 1);
+  total.splice([el],1);
+  drawCart();
+  document.getElementById('total').innerHTML = "$" + " " + calculateTotal();
+}
+
+function drawCart(){
+  var cart = "";
+  for (j = 0; j < myArray['cart'].length; j++){
+      cart += "<img class='fruits' onclick='remove(" + j + ")' src='" + myArray['cart'][j] + "'>";
+  }
+  document.getElementById('cart').innerHTML = cart;
+}
+
+
+function calculateTotal(){
+  var sum = 0;
+
+  for (i = 0; i < total.length; i++){
+    sum += total[i];
+  }
+  return sum.toFixed(2);
+
+  console.log(sum);
+}
+
+
+</script>
+
+<body onload="drawFruits()">
+<h1>Unreasonably Priced Food Shop</h1>
+<p>Click a food to add/remove from cart.</p>
+<div id="wrapper"><br>
+<div id="nameContainer"></div>
+<div id="fruitContainer"></div>
+<div id="priceContainer"></div><br>
+</div>
+
+<h1>Cart</h1>
+<div id="total">$ 0.00</div>
+<div id="cart"></div>
+
+</body>
+
+<style>
+
+body{
+  font-family: sans-serif;
+}
+
+h1{
+  display: inline-block;
+}
+
+.fruits{
+  width: 80px;
+  height: auto;
+  cursor: pointer;
+}
+
+.fruits:hover{
+  opacity: 0.8;
+}
+
+#wrapper{
+  border: 1px solid black;
+  width: 600px;
+}
+
+#nameContainer{
+  display: flex;
+  width: 600px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  justify-content: space-around;
+}
+
+#fruitContainer{
+  width: 600px;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#priceContainer{
+  display: flex;
+  width: 600px;
+  height: 20px;
+  font-size: 20px;
+  font-weight: 100;
+  justify-content: space-around;
+}
+
+#cart{
+  border: 1px solid black;
+  height: 400px;
+  width: 600px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#total{
+  border: 1px solid black;
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 50px;
+  min-width: 230px;
+  font-size: 40px;
+  padding-left: 10px;
+}
+</style>
+
+</html>

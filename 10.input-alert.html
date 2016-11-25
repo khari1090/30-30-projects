@@ -1,0 +1,91 @@
+<!doctype html>
+
+<script>
+
+function submit(){
+  var input = document.getElementById('input').value;
+
+  if (input == ""){
+    document.getElementById('alertHidden').id = "alert";
+    window.setTimeout("closeAlert();", 1000);
+  }
+  else {
+    document.getElementById('successHidden').id = "success";
+    window.setTimeout("closeSuccsss();", 1000);
+  }
+  document.getElementById('input').focus();
+  document.getElementById('input').value = "";
+}
+
+function closeAlert(){
+  document.getElementById('alert').id = "alertHidden";
+}
+
+function closeSuccsss(){
+  document.getElementById('success').id = "successHidden";
+}
+
+</script>
+
+<body>
+<div id="container">
+Submitting an empty field will display an error message and a filled field will display a success message:
+<br><br>
+<input id="input">
+<button onclick="submit()">Submit</button>
+<br><br>
+<div id="alertHidden">You need to enter some text.</div>
+<div id="successHidden">Cool message, bro!</div>
+</div>
+</body>
+
+<style>
+#container{
+  width: 200px;
+  height: 200px;
+  font-family: sans-serif;
+}
+#alertHidden{
+  visibility: hidden;
+  height: 40px;
+  padding: 3%;
+  opacity: 0;
+  border-radius: 10px;
+  font-family: sans-serif;
+  height: 0px;
+  transition: .5s ease;
+}
+
+#alert {
+  background-color: tomato;
+  color: white;
+  padding: 3%;
+  height: 40px;
+  transition: .5s ease;
+  border-radius: 10px;
+  font-family: sans-serif;
+}
+
+#success{
+  height: 40px;
+  background-color: green;
+  color: white;
+  padding: 3%;
+  transition: .5s ease;
+  border-radius: 10px;
+  font-family: sans-serif;
+}
+
+#successHidden {
+  visibility: hidden;
+  height: 40px;
+  padding: 3%;
+  opacity: 0;
+  transition: .5s ease;
+  border-radius: 10px;
+  font-family: sans-serif;
+  height: 0px;
+}
+</style>
+
+</html>

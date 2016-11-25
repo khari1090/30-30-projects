@@ -1,0 +1,125 @@
+<!doctype html>
+
+<script>
+
+  window.onload=function(){
+    document.getElementById('load').focus();
+  }
+
+  function front(){
+    document.getElementById('cube').style.transform = "rotateY(0deg)";
+  }
+
+  function back(){
+    document.getElementById('cube').style.transform = "rotateY(180deg)";
+  }
+
+  function left(){
+    document.getElementById('cube').style.transform = "rotateY(90deg)";
+  }
+
+  function right(){
+    document.getElementById('cube').style.transform = "rotateY(-90deg)";
+  }
+
+  function tops(){
+    document.getElementById('cube').style.transform = "rotateX(-90deg)";
+  }
+
+  function bottoms(){
+    document.getElementById('cube').style.transform = "rotateX(90deg)";
+  }
+
+
+</script>
+
+<body>
+
+  <div class="container">
+    <div id="cube">
+      <div id="front">Front</div>
+      <div id="back">Back</div>
+      <div id="left">Left</div>
+      <div id="right">Right</div>
+      <div id="top">Top</div>
+      <div id="bottom">Bottom</div>
+    </div>
+  </div>
+
+  <br><br><br>
+
+  <div id="buttons">
+    <button id="load" onclick="front()">Front</button>
+    <button onclick="back()">Back</button>
+    <button onclick="left()">Left</button>
+    <button onclick="right()">Right</button>
+    <button onclick="tops()">Top</button>
+    <button onclick="bottoms()">Bottom</button>
+  </div>
+
+</body>
+
+<style>
+
+.container {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  perspective: 800px;
+  margin: 10% auto;
+}
+
+#buttons {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+#buttons button {
+  border: none;
+  outline: none;
+  background-color: #333;
+  color: white;
+  font-size: 18px;
+  padding: 2%;
+  margin: 1%;
+}
+
+#buttons button:focus {
+  background-color: blue;
+}
+
+
+#cube {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  transform: ;
+}
+
+#cube div {
+  margin: 0 auto;
+  width: 198px;
+  height: 198px;
+  display: block;
+  position: absolute;
+  opacity: 0.4;
+
+  font-size: 50px;
+  font-family: sans-serif;
+  font-weight: bolder;
+  color: white;
+}
+
+#cube #front  {background-color: black; transform: rotateY(0deg)   translateZ(100px);}
+#cube #back   {background-color: black; transform: rotateY(180deg) translateZ(100px);}
+#cube #left   {background-color: black; transform: rotateY(-90deg) translateZ(100px);}
+#cube #right  {background-color: black; transform: rotateY(90deg)  translateZ(100px);}
+#cube #top    {background-color: black; transform: rotateX(90deg)  translateZ(100px);}
+#cube #bottom {background-color: black; transform: rotateX(-90deg) translateZ(100px);}
+
+</style>
+
+</html>

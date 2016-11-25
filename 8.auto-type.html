@@ -1,0 +1,43 @@
+<!doctype html>
+
+<body>
+<div id="myText"></div>
+</body>
+
+<script>
+var myString = "This text is appearing all by itself.";
+var myArray = myString.split("");
+
+function animateText() {
+	if(myArray.length > 0) {
+		document.getElementById("myText").innerHTML += myArray.shift();
+	}
+	setTimeout('animateText()',80);
+}
+
+animateText();
+</script>
+
+<style>
+body{
+  background-color: #129;
+}
+
+#hahaha{
+  width: 90%;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 150px;
+  color: white;
+}
+
+#myText {
+	width: 90%;
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 150px;
+	color: white;
+}
+</style>
+
+</html>

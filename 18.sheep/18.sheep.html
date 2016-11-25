@@ -1,0 +1,48 @@
+<script>
+function bah(){
+  var sheepSleep = document.getElementById('sheepSleep');
+
+
+  if (document.getElementById('sheepSleep').style.opacity = "1"){
+    var audio = new Audio('http://www.wavsource.com/snds_2016-10-30_1570758759693582/animals/sheep521.wav');
+    document.getElementById('sheepSleep').style.opacity = "0";
+    window.setTimeout("originalState()", 700);
+    audio.volume = 0.3;
+    audio.play();
+
+  }
+  else{
+    document.getElementById('sheepSleep').style.opacity = "1";
+  }
+}
+
+function originalState(){
+  document.getElementById('sheepSleep').style.opacity = "1";
+}
+
+</script>
+
+<body>
+<img id="sheepWoke" src="https://www.dropbox.com/s/h21iizhpypuhkuz/sheep2.png?raw=1" onclick="">
+<img id="sheepSleep" src="https://www.dropbox.com/s/23gpikij11yv3df/sheep1.png?raw=1" onclick="bah()">
+<div id="cheek"></div>
+<div
+</body>
+
+<style>
+img{
+  cursor: pointer;
+  position: absolute;
+}
+
+#sheepSleep{
+  opacity:1;
+  transition: .3s ease-in-out;
+  background-color: #000080;
+}
+
+#sheepWoke{
+  opacity:1;
+  background-color: lightblue;
+}
+</style>

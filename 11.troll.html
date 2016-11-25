@@ -1,0 +1,94 @@
+<!doctype html>
+
+<script>
+
+function win(){
+  document.write("<h1>Fine, you caught me. <br> Refresh to play again.</h1>")
+}
+
+function move(){
+  var buffer = document.getElementById('buffer');
+  var x = Math.floor((Math.random() * 1000) + 1);
+  var y = Math.floor((Math.random() * 1000) + 1);
+
+  buffer.style.top = x + "px";
+  buffer.style.left = y + "px";
+}
+
+function easy(){
+  document.getElementById('level').innerHTML = "Easy";
+  document.getElementById('buffer').style.transition = ".4s ease"
+  document.getElementById('buffer').style.padding = "5%";
+}
+
+function medium(){
+  document.getElementById('level').innerHTML = "Medium";
+  document.getElementById('buffer').style.transition = ".3s ease"
+  document.getElementById('buffer').style.padding = "7%";
+}
+
+function wtf(){
+  document.getElementById('level').innerHTML = "WTF!?";
+  document.getElementById('buffer').style.transition = ".02s ease";
+  document.getElementById('buffer').style.padding = "10%";
+}
+
+
+
+</script>
+
+<body>
+<div id="buffer" onmousemove="move()">
+<img src="https://sc.mogicons.com/l/troll-face-22.png" onclick="win()">
+</div>
+<div id="select">
+  Chose Difficulty:
+<button onclick="easy()">Easy</button>
+<button onclick="medium()">Medium</button>
+<button onclick="wtf()">WTF!?</button>
+<div id="level">Easy</div>
+</div>
+</body>
+
+<style>
+
+body{
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+#select{
+  height: auto;
+  width: 100%;
+}
+
+button{
+  background-color: white;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+#level{
+  position: relative;
+  float: right;
+  color: blue;
+  font-size: 50px;
+}
+
+#buffer {
+  padding: 5%;
+  width: 25%;
+  max-width: 100px;
+  position: absolute;
+  top: ;
+  left: ;
+  transition: .4s ease;
+}
+
+#buffer img {
+  max-width: 100%;
+  max-height: 100%;
+}
+</style>
+
+</html>

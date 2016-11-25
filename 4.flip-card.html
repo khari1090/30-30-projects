@@ -1,0 +1,86 @@
+<!doctype html>
+<script>
+
+function flip(el){
+
+  if (el.className == "card"){
+    el.className = "card-flipped";
+  }
+  else{
+    el.className = "card";
+  }
+
+}
+
+</script>
+
+<body>
+
+  <div class="container">
+    <div id="card" onclick="flip(this)">
+      <div id="front">1</div>
+      <div id="back">2</div>
+    </div>
+  </div>
+
+</body>
+
+<style>
+
+#page {
+  width: 100%;
+  height: 100%;
+  border: 5px solid black;
+}
+
+.container {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.card-flipped {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  transform: rotateY(180deg);
+}
+
+#card div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin-top: 10%;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  font-size: 50px;
+  font-family: sans-serif;
+  font-weight: bolder;
+  color: white;
+  border-radius: 10px;
+}
+
+#card #front {
+  background: linear-gradient(141deg, #FFE4B5 0%, #FFA500 51%, #FFD700 75%);
+}
+
+#card #back {
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  transform: rotateY( 180deg );
+}
+
+</style>
+
+</html>

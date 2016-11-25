@@ -1,0 +1,129 @@
+<!doctype HTML>
+
+<script>
+
+var barPos = -1;
+
+    window.onscroll=function(){
+        var bar = document.getElementById('search');
+        if (barPos < 0){
+          barPos = findPosY (bar);
+        }
+
+        if (pageYOffset > barPos){
+            bar.style.position='fixed';
+            bar.style.top = 0;
+
+        }else{
+            bar.style.position='relative';
+        }
+    };
+
+
+    function findPosY(obj) {
+        var top = 0;
+        if (typeof (obj.offsetParent) != 'undefined' && obj.offsetParent) {
+            while (obj.offsetParent) {
+                top += obj.offsetTop;
+                obj = obj.offsetParent;
+            }
+            top += obj.offsetTop;
+        }
+        else if (obj.y)
+            top += obj.y;
+        return top;
+    }
+
+</script>
+
+<body>
+
+  <h1>Website</h1>
+
+<div id="search">
+  <input id="input" placeholder="Search for something here...">
+</div>
+
+  <div class="main">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+</body>
+
+<style>
+
+body{
+  margin: 0;
+  transition: 5s ease;
+}
+
+h1{
+  font-family: sans-serif;
+  text-align: center;
+  padding: 5px;
+  font-size: 80px;
+}
+
+#search{
+  background-color: lightblue;
+  margin-bottom: 50px;
+  z-index: 3;
+  width: 100%;
+  transition: 1s ease;
+}
+
+#input{
+  width: 90%;
+  font-size: 22px;
+  margin-left: 40px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+#wrapper{
+  width: 300px;
+  height: 500px;
+  border: 1px solid black;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.main{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: 1s ease;
+}
+
+.main div{
+  background-color: lightgray;
+  width: 300px;
+  height: 200px;
+  margin: 10px;
+}
+</style>
+
+</html>

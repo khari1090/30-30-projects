@@ -1,0 +1,119 @@
+<!doctype html>
+<script>
+var myArray = [];
+
+function drawRow(){
+  var myHtml = "";
+  for (i = 0; i < myArray.length; i++){
+      myHtml += "<div class='listItem' onclick='crossOff(this)'>" + myArray[i] + "<div id='delete' onclick='remove(" + i + ")'>✖︎</div></div>";
+  }
+  document.getElementById('list').innerHTML = myHtml;
+  document.getElementById('task').value = "";
+  document.getElementById('task').focus();
+}
+
+function crossOff(el){
+  if (el.id == ""){
+    el.id = "checked";
+    }
+  else{
+    el.id = "";
+  }
+}
+
+function pushArray() {
+  var task = document.getElementById('task').value;
+  if (task == "" || task == " "){
+    return;
+  }
+  else {
+    myArray.push(task);
+  }
+  drawRow();
+}
+
+function remove(el){
+  console.log(el);
+  myArray.splice(el, 1);
+  drawRow();
+}
+
+</script>
+
+<body>
+<div id="wrapper">
+<input id="task" placeholder="Add something...">
+<button id="submit" onclick="pushArray()">Submit</button><br><br>
+<div id="list"></div>
+</div>
+</body>
+
+<style>
+#check{
+  float: left;
+  margin-right: 20px;
+}
+#wrapper{
+  width: 400px;
+  border: 1px solid black;
+  height: 300px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.listItem{
+  width: 100%;
+  background-color: #F5F5F5;
+  font-size: 20px;
+  font-family: sans-serif;
+  padding: 2%;
+  cursor: pointer;
+}
+
+.listItem:hover{
+  background-color: lightgray;
+}
+
+#checked{
+  width: 100%;
+  background-color: lightgreen;
+  font-size: 20px;
+  font-family: sans-serif;
+  padding: 2%;
+  cursor: pointer;
+  text-decoration: line-through;
+}
+
+#delete{
+  color: gray;
+  float: right;
+  padding-right: 20px;
+  padding-left: 10px;
+  cursor: pointer;
+  height: 100%;
+}
+
+#delete:hover{
+  color: red;
+}
+
+#task{
+  font-size: 20px;
+}
+
+#submit{
+  border-style: none;
+  font-size: 20px;
+  background-color: tomato;
+  color: #333;
+  width: 150px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#submit:hover{
+  opacity: .9;
+}
+</style>
+
+</html>

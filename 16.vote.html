@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+
+<script>
+
+var red = 0;
+var green = 0;
+
+function voteGreen(){
+  green++;
+  document.getElementById('greenNum').innerText = green;
+  show();
+}
+
+function voteRed(){
+  red++;
+  document.getElementById('redNum').innerText = red;
+  show();
+}
+
+function show(){
+  var greenbar = document.getElementById('green');
+  var redbar = document.getElementById('red');
+  var ratioGreen = green / (red+green) * 100;
+  var ratioRed = red / (red+green) * 100;
+  greenbar.style.width = ratioGreen + "%";
+  redbar.style.width = ratioRed + "%";
+}
+
+</script>
+
+<body>
+  <h1 style="font-family: sans-serif">Rating:</h1>
+  <div id="wrapper">
+    <div id="green"></div>
+    <div id="red"></div>
+  </div>
+  <br>
+  <div id="buttonWrapper">
+  <button id="up" onclick="voteGreen()" style="font-size: 20px">+</button>
+  <div class="number" id="greenNum"></div>
+  <button id="down" onclick="voteRed()" style="font-size: 20px">-</button>
+  <div class="number" id="redNum"></div>
+  </div>
+</body>
+
+<style>
+
+#buttonWrapper{
+  /*border: 1px solid black;*/
+  display: flex;
+  align-items: center;
+}
+
+button{
+  display: inline;
+  margin-right: 5px;
+  margin-left: 5px;
+  color: white;
+  border-style: none;
+  cursor: pointer;
+  shadow: 1px;
+  transition: .2s ease;
+}
+
+#up{
+  background-color: seagreen;
+}
+
+#down{
+  background-color: tomato;
+}
+
+.number{
+  border: 1px solid black;
+  width: 53px;
+  height: 30px;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#wrapper{
+  width: 200px;
+  height: 60px;
+  border: 2px solid black;
+}
+
+#red{
+  width:0;
+  height: 100%;
+  background-color: #FF6347;
+  position: relative;
+  float: right;
+}
+
+#green{
+  width:0;
+  height: 100%;
+  background-color: seagreen;
+  position: relative;
+  float: left;
+}
+
+</style>
+
+</html>
